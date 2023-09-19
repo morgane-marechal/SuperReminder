@@ -2,9 +2,9 @@
 require("Model/Task.php");
 
 $checktask = new Task();
-echo $checktask->checktask('TEST', '2');
+echo $checktask->updatetask('2', 'der');
 
 
-
+ 
 ?>
 
