@@ -60,6 +60,7 @@ class User{
                 'login' => $login,
             ]);
             $results = $sql_exe->fetch(PDO::FETCH_ASSOC);
+            //var_dump($results);
             if ($results) {
                 $getId=$this->getId($login);
                 $_SESSION["id"]=$getId[0]["id"];
@@ -98,12 +99,12 @@ class User{
     }
 
     public function getPassword($login){
-        $displayUsers = $this->db->prepare("SELECT password FROM user WHERE login = :login");
+        $displayUsers = $this->db->prepare("SELECT mp FROM user WHERE login = :login");
         $displayUsers->execute([
             'login' => $login,
         ]);
         $result = $displayUsers->fetchAll(PDO::FETCH_ASSOC);
-        return $result[0]['password'];
+        return $result[0]['mp'];
     }
 
     public function setLogin($id, $login){
