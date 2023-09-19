@@ -35,56 +35,44 @@ class task {
 
                     }
                 }
-            
-        }
-    //             // Vérifier le mot de passe
-    //             if (password_verify($password, $hashed_password)) {
-    //             // Authentification réussie, créer une session pour l'utilisateur
-    //             session_start();
-    //             $_SESSION['id'] = true;
-    //             $_SESSION['login'] = $row['login'];
-            
+        
+        public function newtask($title,$def,$id_user, $state ) {
+            //verifier si une tache avec le meme titre et le meme id_user : 
+                if ($this->checktask($title, $id_user)=== false){
+                    $sql = "INSERT INTO task (title, def, id_user, state) VALUES (:title, :def, :id_user, :state)";
+                    $intask = $this->db->prepare($sql);
+                    $intask->bindParam(':title', $title);
+                    $intask->bindParam(':def', $def);
+                    $intask->bindParam(':id_user', $id_user);
+                    $intask->bindParam(':state', $state);
+                    $intask->execute();
+                }else{
+                    return 'cette tache existe dejà';
+                }
     
-    //                     // Rediriger vers la page de profil ou la page d'admin en fonction du login
-    //                     if ($_SESSION['login'] === 'admin') {
-    //                         header("Location: admin.php");
-    //                     } else {
-    //                         header("Location: profil.php");
-    //                     }
-    //                     exit;
-    //                 } else {
-    //                     echo "Mot de passe incorrect";
-    //                 }
-    //             } else {
-    //                 echo "Login incorrect";
-    //             }
-    //         } catch(PDOException $e) {
-    //             echo "Erreur: " . $e->getMessage();
-    //         }
-    //     }
-    // }
-    
-    // // Utilisation des classes
-    
-    // try {
-    //     $host = "localhost";
-    //     $username = "root";
-    //     $password = "Dyane198124//";
-    //     $dbname = "livreor";
-    
-    //     $db = new Database($host, $username, $password, $dbname);
-    //     $user = new User($db);
-    
-    //     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    //         $login = $_POST['login'];
-    //         $password = $_POST['password'];
-    
-    //         $user->authenticate($login, $password);
-    //     }
-    
-    //     $db->closeConnection();
-    // } catch (Exception $e) {
-    //     echo "Erreur : " . $e->getMessage();
+               
+                }
+
+        public function showtask($id_user){
+            //verifier quelle tache est associee a un utilisateur defini   
+                $stmt = $this->db->prepare("SELECT * FROM task WHERE id_user = :id_user");
+                $stmt->bindParam(':id_user', $id_user);
+                $stmt->execute();
+        
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+                } 
+              
+                
+        public function updatetask($id, $state){
+                    $stmt = $this->db->prepare("UPDATE task SET state = :state WHERE id = :id");
+                    $stmt->bindParam(':state', $state);
+                    $stmt->bindParam(':id', $id);
+                    $stmt->execute();
+        
+                    return true;
+               
+        }    
+}                  
     
 ?>
 
