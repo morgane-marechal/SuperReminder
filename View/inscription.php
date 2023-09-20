@@ -45,6 +45,10 @@
                 <input class="submit" type="submit" value="Soumettre" />
             </div>
         </form>
+    
+        <div id="content-toast">
+            <div id="toast-screen">Hello</div>
+        </div>
 
 
     <?php 

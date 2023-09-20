@@ -49,9 +49,7 @@ class task {
                 }else{
                     return 'cette tache existe dejà';
                 }
-    
-               
-                }
+        }
 
         public function showtask($id_user){
             //verifier quelle tache est associee a un utilisateur defini   

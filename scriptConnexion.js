@@ -6,13 +6,14 @@ toast.innerHTML=word;
 function displayToast($message){
     toast.innerHTML=$message;
     toast.style.display = "block";
+    toast.style.animation = "appear 0.7s";
     setTimeout(() => {
-        toast.style.display = "none";
-    }, "3000");
+        toast.style.display = "none";   
+    }, "2000");
 }
 
 function reload(){
-    window.location.replace('profil.php')
+    window.location.replace('../index.php')
 }
 
 
