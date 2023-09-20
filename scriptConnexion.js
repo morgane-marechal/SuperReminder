@@ -12,7 +12,7 @@ function displayToast($message){
 }
 
 function reload(){
-    window.location.replace('profil.php')
+    window.location.replace('../index.php')
 }
 
 
