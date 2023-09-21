@@ -31,7 +31,11 @@ session_start();
     </div>
     <div class="module-form">
                 <input class="submit" type="submit" value="Soumettre" />
-</form>            
+</div>
+</form>   
+
+
+<div id="display-task"></div>
         
 
 </body>
