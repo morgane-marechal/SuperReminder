@@ -35,11 +35,17 @@ session_start();
     </div>
     <div class="module-form">
                 <input class="submit" type="submit" value="Soumettre" />
+
 </form>
 
 <div id="content-toast">
             <div id="toast-screen">Hello</div>
 </div>
+
+
+
+<div id="display-task"></div>
+
         
 
 </body>

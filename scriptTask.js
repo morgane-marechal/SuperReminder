@@ -14,3 +14,24 @@ if (taskform){
     let responseData = await response.json();
     });
 }
+
+
+//aller chercher toutes les taches
+
+async function gettask(){
+    const response = await fetch("../Controller/traitement-displaytask.php");
+    console.log(response);
+    const task = await response.json();
+    console.log(task);
+    console.log(task[0]);
+    console.log(task[0]['def']);
+    let display=document.getElementById("display-task");
+    //display.innerHTML=task[0]['def'];
+    let jsonL = Object.keys(task).length;
+    console.log(jsonL);
+    for (let i=0; i < jsonL; i++){
+        display.innerHTML += "<p>"+ task[i]['title']+" "+task[i]['def']+" "+task[i]['state']+'</p>';
+    }
+    }
+
+gettask();

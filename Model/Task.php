@@ -57,7 +57,8 @@ class task {
                 $stmt->bindParam(':id_user', $id_user);
                 $stmt->execute();
         
-                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+                $alltask = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                return json_encode($alltask);
                 } 
               
                 
