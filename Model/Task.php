@@ -5,7 +5,7 @@ class task {
         
         public function __construct() {
             try {
-                $this->db = new PDO("mysql:host=localhost;dbname=db_super_reminder",'root','Dyane198124//');
+                $this->db = new PDO('mysql:host=127.0.0.1;dbname=db_super_reminder', 'root', '');
                 $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             } catch(PDOException $e) {
                 throw new Exception("Erreur de connexion à la base de données : " . $e->getMessage());
