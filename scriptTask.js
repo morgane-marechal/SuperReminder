@@ -1,5 +1,6 @@
 let taskform = document.getElementById('formtask'); //declarer un element du DOM sous forme de variable
 
+
 //_______________________________________ADD TASK__________________________________
 
 
@@ -55,6 +56,39 @@ if (taskform){
     
     deleteTask();
 
+//_______________________________________UPDATE TASK__________________________________
+
+
+function updateTask(){
+    let allUpdate=document.querySelectorAll('.update');
+    console.log("allUpdate: "+allUpdate.length);
+    for (const Up of allUpdate){
+        console.log("a");
+        Up.addEventListener("change", (e) =>{
+         //e.preventDefault();
+            let idUpdate = e.target.id;
+            let valueUpdate = e.target.value;
+            console.log(idUpdate);
+            fetchUpdateTask(idUpdate, valueUpdate);
+        })
+    }
+}
+
+async function fetchUpdateTask(idUpdate, valueUpdate){
+    //let response =  await fetch("../Controller/traitement-deleteTask.php?deleteTask=${idDelete}")
+    let url = `../Controller/traitement-updateTask.php?updateTask=${idUpdate}&valueUpdate=${valueUpdate}`;
+    let request = new Request(url, {
+        method: 'GET',
+    });
+    let response = await fetch(request);
+    console.log("request",request);
+    let responseData = await response.text();
+    gettask();
+  }
+
+
+// ____________________________________________________________________________________
+
 
 //aller chercher toutes les taches
 
@@ -79,15 +113,14 @@ async function gettask(){
     displayTable.innerHTML="";
     for (let i=0; i < jsonL; i++){
         text="<tr>"+"<td>"+ task[i]['title']+"</td>"+"<td>"+task[i]['def']+"</td><td>"+
-        "<select name='state' id='"+ task[i]['id']+"' class='update'><option value='a faire'>A faire</option><option value='fait'>Fait</option></select></td>"+
+        "<select name='state' id='"+ task[i]['id']+"' class='update'><option value=''>"+task[i]['state']+"</option><option value='à faire'>A faire</option><option value='fait'>Fait</option></select></td>"+
         "<td><button id='"+ task[i]['id']+"' class='delete' >X</button></td></tr>";
        displayTable.insertAdjacentHTML('afterbegin', text);
     }
 
     deleteTask();
+    updateTask();
 }
-
-//_______________________________________UPDATE TASK__________________________________
 
 
 gettask();
