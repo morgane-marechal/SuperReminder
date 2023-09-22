@@ -63,20 +63,22 @@ class task {
               
                 
         public function updatetask($id, $state){
-                    $stmt = $this->db->prepare("UPDATE task SET state = :state WHERE id = :id");
-                    $stmt->bindParam(':state', $state);
+                    $stmt = $this->db->prepare("UPDATE task SET state = :cstate WHERE id = :id");
+                    $stmt->bindParam(':cstate', $state);
                     $stmt->bindParam(':id', $id);
                     $stmt->execute();
-        
-                    return true;
-               
+                    if ($stmt) {
+                        return "yeah";
+                     } else{
+                        return "nooo";
+                    }
         } 
+
         
         public function deleteTask($id){
             $stmt = $this->db->prepare("DELETE FROM task WHERE id = :id");
             $stmt->bindParam(':id', $id);
             $stmt->execute();
-            
             if ($stmt) {
                 return "yeah";
              } else{
