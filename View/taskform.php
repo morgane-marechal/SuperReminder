@@ -16,18 +16,18 @@ session_start();
 <?php require('header.php');?>
 
 
-<h2> Liste des taches</h2>
-<?php var_dump($_SESSION); ?>
-<form id="formtask" action="" method="post" class="task-form">
-    <div class = "task-form">
+
+<?php //var_dump($_SESSION); ?>
+<form id="formtask" action="" method="post" class="module-form">
+    <div class = "module-form">
         <label for="title">Titre : </label>
         <input type="text" name="title" id="title" required />
     </div>
-    <div class="task-form">
+    <div class="module-form">
         <label for="def">Définition : </label>
         <input type="text" name="def" id="def" required/>
     </div>
-    <div class="task-form">
+    <div class="module-form">
         <select name="state">
             <option value="a faire">A faire</option>
             <option value="fait">Fait</option>
@@ -35,8 +35,10 @@ session_start();
     </div>
     <div class="module-form">
                 <input class="submit" type="submit" value="Soumettre" />
-
+    </div>
 </form>
+
+<h2> Liste des taches</h2>
 
 <div id="content-toast">
             <div id="toast-screen">Hello</div>
