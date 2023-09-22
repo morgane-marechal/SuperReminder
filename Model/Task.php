@@ -70,7 +70,21 @@ class task {
         
                     return true;
                
-        }    
+        } 
+        
+        public function deleteTask($id){
+            $stmt = $this->db->prepare("DELETE FROM task WHERE id = :id");
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+            
+            if ($stmt) {
+                return "yeah";
+             } else{
+                return "nooo";
+            }
+         }
+        
+
 }                  
     
 ?>
