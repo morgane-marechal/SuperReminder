@@ -21,6 +21,9 @@
     <button id="connexion-button" class="call-form-btn">Connexion</button> -->
 
     <div id="forms-space"></div>
+
+    <?php require('footerIndex.php');?>
+
 </body>
 <script defer src="script.js"></script>
 <script defer src="scriptDesign.js"></script>

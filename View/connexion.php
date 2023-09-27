@@ -39,12 +39,11 @@
         <div id="toast-screen">Hello</div>
     </div>
     
-
+    
     <?php //var_dump($_SESSION);?>
 
-    <?php
+    <?php require('footer.php');?>
 
-    ?>
 
 </body>
 <script defer src="../scriptDesign.js"></script>

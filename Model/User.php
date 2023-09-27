@@ -5,7 +5,12 @@ class User{
     private $db = 'NULL';
 
     public function __construct(){
-        $db = new PDO('mysql:host=127.0.0.1;dbname=db_super_reminder', 'root', '');
+        $env = parse_ini_file('.env');
+        $user = $env["ADMIN_USERNAME"];
+        $host = $env["ADMIN_HOST"];
+        $dbname = $env["ADMIN_DB"];
+        //echo $user;
+        $db = new PDO('mysql:host='.$host.';dbname='.$dbname.'', $user, '');
         $this->db = $db;
     }
 

@@ -6,7 +6,7 @@ toast.innerHTML=word;
 function displayToast($message){
     toast.innerHTML=$message;
     toast.style.display = "block";
-    toast.style.animation = "appear 0.7s ease-in-out";
+    toast.style.animation = "appear 0.4s ease-in-out";
     setTimeout(() => {
         toast.style.display = "none";   
     }, "2000");

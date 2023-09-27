@@ -16,15 +16,12 @@ if (taskform){
     let response = await fetch(request);
     console.log("request",request);
     gettask();
-    let responseData = await response.json();
+    //let responseData = await response.json();
     });
 }
 
 
-
-
     //initialise delete on the task
-
 
     function deleteTask(){
         let allDel=document.querySelectorAll('.delete');

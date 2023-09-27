@@ -1,7 +1,6 @@
 <?php
 session_start();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +28,7 @@ session_start();
     </div>
     <div class="module-form">
         <select name="state">
-            <option value="a faire">A faire</option>
+            <option value="à faire">A faire</option>
             <option value="fait">Fait</option>
         </select>
     </div>
@@ -38,17 +37,18 @@ session_start();
     </div>
 </form>
 
-<h2> Liste des taches</h2>
+<h2> Liste des tâches</h2>
+
+<div id="display-task"></div>
+
 
 <div id="content-toast">
             <div id="toast-screen">Hello</div>
 </div>
 
 
-
-<div id="display-task"></div>
-
         
+<?php require('footer.php');?>
 
 </body>
     <script defer src="../scriptTask.js"></script>

@@ -1,7 +1,6 @@
 console.log("responsiv js ok");
 let navEl = document.querySelector('nav');
 let navCloseIconButton = document.querySelector('nav > button[role="icon-button"]');
-
 let navButtons = document.querySelectorAll('nav > button');
 let navBalises = document.querySelectorAll('nav > li');
 let displayMenu = document.getElementById("menuButton");
@@ -29,14 +28,30 @@ for (let navButton of navButtons) {
     });
 }
 
+// function initLink(){
+//     let allLink=document.querySelectorAll('.menuLink');
+//     console.log("allLink: "+allLink.length);
+    for (const link of allLink){
+        console.log("a");
+        link.addEventListener("click", (e) =>{
+            if (window.matchMedia("(max-width: 460px)").matches) {
+                navEl.hidden = true;
+            }   
+        })
+    }
+// }
+
 for (let navLi of navBalises) {
     navLi.addEventListener('click', (event) => {
         if (window.matchMedia("(max-width: 460px)").matches) {
             navEl.hidden = true;
-        }
-    
+        }   
     });
+
 }
+
+
+
 
 navCloseIconButton.addEventListener('click', (event) => {
     if (window.matchMedia("(max-width: 460px)").matches) {
@@ -48,7 +63,7 @@ navCloseIconButton.addEventListener('click', (event) => {
 
 menuButton.addEventListener('click', (event) => {
     if (window.matchMedia("(max-width: 460px)").matches) {
-        navEl.hidden = false;
+        navEl.hidden = true;
     } 
 });
 
@@ -60,3 +75,4 @@ function navReappear(){
         navEl.hidden = false;
     }
 }
+

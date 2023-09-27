@@ -32,8 +32,7 @@ class task {
                     return true;
                  } else{
                     return false;
-
-                    }
+                 }
                 }
         
         public function newtask($title,$def,$id_user, $state ) {
@@ -41,10 +40,10 @@ class task {
                 if ($this->checktask($title, $id_user)=== false){
                     $sql = "INSERT INTO task (title, def, id_user, state) VALUES (:title, :def, :id_user, :state)";
                     $intask = $this->db->prepare($sql);
-                    $intask->bindParam(':title', $title);
-                    $intask->bindParam(':def', $def);
+                    $intask->bindParam(':title', htmlspecialchars($title));
+                    $intask->bindParam(':def', htmlspecialchars($def));
                     $intask->bindParam(':id_user', $id_user);
-                    $intask->bindParam(':state', $state);
+                    $intask->bindParam(':state', htmlspecialchars($state));
                     $intask->execute();
                 }else{
                     return 'cette tache existe dejà';
@@ -58,7 +57,7 @@ class task {
                 $stmt->execute();
         
                 $alltask = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                return json_encode($alltask);
+                return $alltask;
                 } 
               
                 
@@ -84,8 +83,7 @@ class task {
              } else{
                 return "nooo";
             }
-         }
-        
+         }       
 
 }                  
     

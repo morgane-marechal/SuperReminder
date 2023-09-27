@@ -50,12 +50,8 @@
             <div id="toast-screen">Hello</div>
         </div>
 
+        <?php require('footer.php');?>
 
-    <?php 
-
-
-
-    ?>
     </body>
         <script defer src="../scriptRegisterForm.js"></script>
         <script defer src="../scriptDesign.js"></script>

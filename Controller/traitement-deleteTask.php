@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-
 require ("../Model/Task.php");
 
 $id_task = htmlspecialchars($_GET["deleteTask"]);
