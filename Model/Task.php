@@ -5,7 +5,12 @@ class task {
         
         public function __construct() {
             try {
-                $this->db = new PDO('mysql:host=127.0.0.1;dbname=db_super_reminder', 'root', '');
+                $env = parse_ini_file('.env');
+                $user = $env["ADMIN_USERNAME"];
+                $host = $env["ADMIN_HOST"];
+                $dbname = $env["ADMIN_DB"];
+                //echo $user;
+                $this->db = new PDO('mysql:host='.$host.';dbname='.$dbname.'', $user, '');
                 $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             } catch(PDOException $e) {
                 throw new Exception("Erreur de connexion à la base de données : " . $e->getMessage());
@@ -32,8 +37,7 @@ class task {
                     return true;
                  } else{
                     return false;
-
-                    }
+                 }
                 }
         
         public function newtask($title,$def,$id_user, $state ) {
@@ -41,10 +45,10 @@ class task {
                 if ($this->checktask($title, $id_user)=== false){
                     $sql = "INSERT INTO task (title, def, id_user, state) VALUES (:title, :def, :id_user, :state)";
                     $intask = $this->db->prepare($sql);
-                    $intask->bindParam(':title', $title);
-                    $intask->bindParam(':def', $def);
+                    $intask->bindParam(':title', htmlspecialchars($title));
+                    $intask->bindParam(':def', htmlspecialchars($def));
                     $intask->bindParam(':id_user', $id_user);
-                    $intask->bindParam(':state', $state);
+                    $intask->bindParam(':state', htmlspecialchars($state));
                     $intask->execute();
                 }else{
                     return 'cette tache existe dejà';
@@ -58,7 +62,7 @@ class task {
                 $stmt->execute();
         
                 $alltask = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                return json_encode($alltask);
+                return $alltask;
                 } 
               
                 
@@ -84,8 +88,7 @@ class task {
              } else{
                 return "nooo";
             }
-         }
-        
+         }       
 
 }                  
     
