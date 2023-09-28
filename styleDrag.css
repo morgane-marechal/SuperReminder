@@ -8,12 +8,17 @@ details > summary {
 }
 
 details:hover{
-    color:rgb(255, 193, 127);
+    color:rgb(197, 127, 52);
 }
 
 summary{
     font-weight: bold;
     margin-bottom:5px;
+
+}
+
+summary::first-letter{
+    text-transform: capitalize;
 }
 
 summary::marker {
