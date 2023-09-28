@@ -1,0 +1,40 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cambay:ital,wght@0,400;0,700;1,400&family=Cormorant+SC:wght@400;500;600;700&family=Dosis&family=Oswald:wght@200;300;400;500;600;700&family=Poppins:wght@100;200;300;500&family=Staatliches&display=swap');
+
+
+
+.item{
+    background-color: rgb(255, 193, 127, 0.2);
+    margin : 2px;
+    padding:10px 2px;
+    color:rgb(60, 60, 60);
+}
+
+.item:active{
+    background-color: rgb(255, 193, 127);
+    color:white;
+}
+.box{
+    /* border:1px solid; */
+    margin:10px;
+    width:200px;
+    height:100%;
+}
+
+.borderbox{
+    margin:6px;
+    text-align: center;
+}
+
+.drop-targets{
+    width:100%;
+    display: flex;
+
+}
+
+.drag-over {
+    border: dashed 2px rgb(60, 60, 60);
+}
+
+
+

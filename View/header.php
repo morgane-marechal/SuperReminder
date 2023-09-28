@@ -12,7 +12,9 @@
 
 
             <?php if ($_SESSION['id']!=null){ ?>
-                <li><a href="taskform.php" class="menuLink">To do liste</a></li>
+                <li><a href="taskform.php" class="menuLink">Liste de tâche</a></li>
+                <li><a href="etiquette.php" class="menuLink">Version étiquettes</a></li>
+
                 <li><a href="deconnexion.php" class="menuLink">Déconnexion</a></li>
             <?php } ?>
             </nav>

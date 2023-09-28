@@ -1,21 +1,25 @@
 <?php
+require('Connect.php');
 
-class task {
-    private $db = "null";
+class task extends Connect{
+    private $db = "NULL";
         
         public function __construct() {
             try {
-                $env = parse_ini_file('.env');
-                $user = $env["ADMIN_USERNAME"];
-                $host = $env["ADMIN_HOST"];
-                $dbname = $env["ADMIN_DB"];
-                //echo $user;
-                $this->db = new PDO('mysql:host='.$host.';dbname='.$dbname.'', $user, '');
-                $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                // $env = parse_ini_file('.env');
+                // $user = $env["ADMIN_USERNAME"];
+                // $host = $env["ADMIN_HOST"];
+                // $dbname = $env["ADMIN_DB"];
+                // //echo $user;
+                // $this->db = new PDO('mysql:host='.$host.';dbname='.$dbname.'', $user, '');
+                // $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $db = $this->connection();
+                $this->db = $db;
             } catch(PDOException $e) {
                 throw new Exception("Erreur de connexion à la base de données : " . $e->getMessage());
             }
         }
+
         public function closeConnection() {
             $this->db = null;
         }

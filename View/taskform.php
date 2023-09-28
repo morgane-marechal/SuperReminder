@@ -9,6 +9,7 @@ session_start();
         <link rel="stylesheet" type="text/css" href="../style.css"/>
         <meta http-equiv="x-ua-compatible" content="IE=edge"/>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+        <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <title>Todoliste</title>
 </head>
 <body>
