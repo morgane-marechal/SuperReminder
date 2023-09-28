@@ -94,7 +94,7 @@ async function gettask(){
     const response = await fetch("../Controller/traitement-displaytask.php");
     console.log(response);
     const task = await response.json();
-    // console.log(task);
+    console.log(task);
     // console.log(task[0]);
     // console.log(task[0]['def']);
     //console.log(jsonL);

@@ -1,16 +1,18 @@
 <?php 
+require('Connect.php');
 
-class User{
+class User extends Connect{
 
     private $db = 'NULL';
 
     public function __construct(){
-        $env = parse_ini_file('.env');
-        $user = $env["ADMIN_USERNAME"];
-        $host = $env["ADMIN_HOST"];
-        $dbname = $env["ADMIN_DB"];
-        //echo $user;
-        $db = new PDO('mysql:host='.$host.';dbname='.$dbname.'', $user, '');
+        // $env = parse_ini_file('.env');
+        // $user = $env["ADMIN_USERNAME"];
+        // $host = $env["ADMIN_HOST"];
+        // $dbname = $env["ADMIN_DB"];
+        // //echo $user;
+        // $db = new PDO('mysql:host='.$host.';dbname='.$dbname.'', $user, '');
+        $db = $this->connection();
         $this->db = $db;
     }
 
