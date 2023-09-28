@@ -8,12 +8,12 @@ details > summary {
 }
 
 details:hover{
-    color:rgb(197, 127, 52);
+    color:rgb(157, 88, 15);
 }
 
 summary{
     font-weight: bold;
-    margin-bottom:5px;
+    margin-bottom:6px;
 
 }
 
