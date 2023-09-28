@@ -29,7 +29,8 @@ session_start();
     </div>
     <div class="module-form">
         <select name="state">
-            <option value="à faire">A faire</option>
+            <option value="afaire">A faire</option>
+            <option value="encours">En cours</option>
             <option value="fait">Fait</option>
         </select>
     </div>

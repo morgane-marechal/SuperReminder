@@ -1,5 +1,21 @@
 console.log("Drag ok");
 
+//________________________________UPDATE____________________________________
+
+
+async function fetchUpdateTask(idUpdate, valueUpdate){
+    //let response =  await fetch("../Controller/traitement-deleteTask.php?deleteTask=${idDelete}")
+    let url = `../Controller/traitement-updateTask.php?updateTask=${idUpdate}&valueUpdate=${valueUpdate}`;
+    let request = new Request(url, {
+        method: 'GET',
+    });
+    let response = await fetch(request);
+    console.log("request",request);
+    let responseData = await response.text();
+    //gettask();
+   // draggable()
+  }
+  
 
 //________________________________dragable_____________________________________
 
@@ -63,7 +79,12 @@ function draggable(){
 
         // display the draggable element
         draggable.classList.remove('hide');
-        console.log(e.target.id);
+        let newState = e.target.id;
+        let idDiv = draggable.id;
+        console.log(newState);
+        console.log("drag "+draggable.id);
+        fetchUpdateTask(idDiv, newState);
+
     }
 }
 
@@ -75,32 +96,53 @@ async function gettask(){
     console.log(response);
     const task = await response.json();
     console.log(task);
-    // console.log(task[0]);
-    // console.log(task[0]['def']);
-    //console.log(jsonL);
-    /*
-    let display=document.getElementById("display-task");
-    let tableHeader = "<table id='displayTask'><tr> <th></th><th></th><th></th></tr></table>";
 
-    display.innerHTML+=tableHeader;
-    let jsonL = Object.keys(task).length;
-    //display.insertAdjacentHTML("afterbegin", tableHeader);
-    let displayTable=document.getElementById("displayTask");
-    //displayTable.insertAdjacentHTML('beforeend', text);
- */
     let afaire=document.getElementById("afaire");
+    let encours=document.getElementById("encours");
+    let fait=document.getElementById("fait");
     let jsonL = Object.keys(task).length;
 
     afaire.innerHTML="";
+    
     for (let i=0; i < jsonL; i++){
-        text="<div class='item' id='item1"+ task[i]['id']+"' draggable='true'>"+ task[i]['title']+"</div>";
-       afaire.insertAdjacentHTML('afterbegin', text);
+        if((task[i]['state'])==="encours"){
+            text="<div class='item' id='"+task[i]['id']+"' draggable='true'><details><summary>"+ task[i]['title']+"</summary>"+ task[i]['def']+"</details></div>";
+            encours.insertAdjacentHTML('afterbegin', text);            
+        }else if((task[i]['state'])==="afaire"){
+            text="<div class='item' id='"+task[i]['id']+"' draggable='true'><details><summary>"+ task[i]['title']+"</summary>"+ task[i]['def']+"</details></div>";
+            afaire.insertAdjacentHTML('afterbegin', text);            
+        }else if((task[i]['state'])==="fait"){
+            text="<div class='item' id='"+task[i]['id']+"' draggable='true'><details><summary>"+ task[i]['title']+"</summary>"+ task[i]['def']+"</details></div>";
+            fait.insertAdjacentHTML('afterbegin', text);            
+        }
+
     }
     draggable();
-   
-
-
 }
+
+
+//_______________________________________UPDATE TASK__________________________________
+
+
+/*
+    function updateTask(){
+        let allUpdate=document.querySelectorAll('.item');
+        console.log("allUpdate: "+allUpdate.length);
+        for (const Up of allUpdate){
+            console.log("a");
+            Up.addEventListener("change", (e) =>{
+            //e.preventDefault();
+                let idUpdate = e.target.id;
+                let valueUpdate = e.target.value;
+                console.log(idUpdate);
+                fetchUpdateTask(idUpdate, valueUpdate);
+            })
+        }
+    }
+*/
+
+
+
 
 gettask();
 draggable();

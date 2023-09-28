@@ -20,7 +20,7 @@
     <?php require('header.php');?>
 
     <div class="container">
-        <h1>JavaScript - Drag and Drop</h1>
+        <h1>Gestion des étiquettes</h1>
 
         <div class="drop-targets">
 
